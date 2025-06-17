@@ -14,7 +14,7 @@ HISTORY_FILE = "user_history.json"
 PREDICTIONS_FILE = "predictions.txt"
 DAILY_LIMIT = 5
 EXTRA_GEN = 5
-PRICE_STARS = 1  # 1 Telegram Star
+PRICE_STARS = 5  # 1 Telegram Star
 
 from aiohttp import web
 
