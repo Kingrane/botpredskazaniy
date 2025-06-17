@@ -270,16 +270,26 @@ async def on_user_message(message: types.Message):
                 reply_markup=main_keyboard()
             )
 
-import threading
+from aiohttp import web
 
-def run_web():
-    web.run_app(app, port=3000)
+async def handle(request):
+    return web.Response(text="I'm alive!")
 
-threading.Thread(target=run_web).start()
-
+async def start_web_app():
+    app = web.Application()
+    app.router.add_get("/", handle)
+    runner = web.AppRunner(app)
+    await runner.setup()
+    site = web.TCPSite(runner, "0.0.0.0", 3000)
+    await site.start()
 
 if __name__ == "__main__":
     import asyncio
 
     print("[main] Бот запускается...")
-    asyncio.run(dp.start_polling(bot))
+
+    async def main():
+        await start_web_app()
+        await dp.start_polling(bot)
+
+    asyncio.run(main())
