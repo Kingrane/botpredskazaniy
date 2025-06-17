@@ -1,5 +1,3 @@
-user_limits.json
-user_history.json
 __pycache__/
 *.pyc
 .env
