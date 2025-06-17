@@ -1,0 +1,9 @@
+user_limits.json
+user_history.json
+__pycache__/
+*.pyc
+.env
+*.env
+*.sqlite3
+*.db
+.DS_Store
